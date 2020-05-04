@@ -1,25 +1,55 @@
 // functions
-function draw_one_square() {
-    var container = document.getElementById('container');
-    container.innerHTML = '';//don't want any extra boxes when you call this function again
+function draw_squares(eachSide=5) {
+    var container = document.querySelector('.container');
+    //  container.innerHTML = '';//don't want any extra boxes when you call this function again
     
-    var box = document.createElement('div');//create a div
-    box.className = 'box';//assign class
-    define_style(box);
-
-    container.appendChild(box);//append
+    for(let i = 0; i < eachSide * eachSide; i++){
+        var box = document.createElement('div');//create a div
+        //box.className = 'box';//assign class
+        box.classList.add("box");
+        define_style(box, 'blue');
+        container.appendChild(box);//append
+    }
+    
   }
 
-function define_style(box){
-    box.style.width = 50;
-    box.style.height = 50;
-    box.style.backgroundColor = 'blue';
+function define_style(box, colour, eachSide){
+    let boxLength = 50;    
+    box.style.width = Math.floor(boxLength);
+    box.style.height = Math.floor(boxLength)
+    box.style.backgroundColor = colour;
+    box.style.padding = 4;
+    box.style.border= '4px solid #fff';//border for margin but use border-box to make sure the width and height are still 50px
+    //box.style.float = 'right';
+    box.style.display = 'inline-block';
 
 }
-// main script
-const mainContainer = document.querySelector('#container');
 
-window.addEventListener('load', function() {
-    draw_one_square();
-});
-  
+function hoverOver(boxes){
+    boxes.forEach(function (box){
+        box.addEventListener('mouseenter', function() {
+            define_style(box, 'white');
+        });
+    });
+}
+
+
+
+function loadWindow(){
+    window.addEventListener('load', function() {
+        draw_squares();
+        outBoxes = document.querySelectorAll('.box');
+        // change colour to white when you hover over 
+        hoverOver(outBoxes);
+
+    });
+}
+
+// main script
+let outBoxes;
+loadWindow();
+console.log(outBoxes);
+
+
+
+
