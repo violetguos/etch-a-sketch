@@ -13,7 +13,7 @@ function draw_squares(eachSide=5) {
     
   }
 
-function define_style(box, colour, eachSide){
+function define_style(box, colour){
     let boxLength = 50;    
     box.style.width = Math.floor(boxLength);
     box.style.height = Math.floor(boxLength)
@@ -45,11 +45,15 @@ function loadWindow(){
     });
 }
 
+function clear(outBoxes){
+    const btn = document.querySelector("#clear");
+    btn.addEventListener('click', function() {draw_squares();});
+}
+
 // main script
 let outBoxes;
+clear();
 loadWindow();
-console.log(outBoxes);
-
 
 
 
