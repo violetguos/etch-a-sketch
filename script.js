@@ -9,9 +9,8 @@ function draw_squares(eachSide=5) {
         box.classList.add("box");
         define_style(box, 'blue');
         container.appendChild(box);//append
-    }
-    
-  }
+    } 
+}
 
 function define_style(box, colour){
     let boxLength = 50;    
@@ -33,6 +32,14 @@ function hoverOver(boxes){
     });
 }
 
+function clear_squares(outBoxes, eachSide=5) {
+    const boxes = document.querySelectorAll('.box');
+    //  container.innerHTML = '';//don't want any extra boxes when you call this function again
+    console.log(boxes);
+    
+    boxes.forEach(function (box) {define_style(box, 'blue')});
+    
+  }
 
 
 function loadWindow(){
@@ -41,18 +48,17 @@ function loadWindow(){
         outBoxes = document.querySelectorAll('.box');
         // change colour to white when you hover over 
         hoverOver(outBoxes);
-
+        clear(outBoxes);
     });
 }
 
 function clear(outBoxes){
     const btn = document.querySelector("#clear");
-    btn.addEventListener('click', function() {draw_squares();});
+    btn.addEventListener('click', function() {clear_squares();});
 }
 
 // main script
 let outBoxes;
-clear();
 loadWindow();
 
 
