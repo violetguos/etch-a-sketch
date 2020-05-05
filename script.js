@@ -3,12 +3,17 @@ function draw_squares(eachSide=5) {
     var container = document.querySelector('.container');
     //  container.innerHTML = '';//don't want any extra boxes when you call this function again
     
-    for(let i = 0; i < eachSide * eachSide; i++){
-        var box = document.createElement('div');//create a div
-        //box.className = 'box';//assign class
-        box.classList.add("box");
-        define_style(box, 'blue');
-        container.appendChild(box);//append
+    for(let i = 0; i < eachSide ; i++){
+        for(let j = 0; j<eachSide; j++){
+            var box = document.createElement('div');//create a div
+            //box.className = 'box';//assign class
+            box.classList.add("box");
+            define_style(box, 'blue');
+            container.appendChild(box);//append
+        }
+        // inserts the square next line
+        var newLine = document.createElement('br');
+        container.appendChild(newLine);
     } 
 }
 
