@@ -28,20 +28,30 @@ function define_style(box, colour, boxSize){
     
     box.style.width = boxSize;
     box.style.height = boxSize;
-    console.log(boxSize)
     box.style.backgroundColor = colour;
-    box.style.padding = 4;
-    box.style.border= '4px solid #fff';//border for margin but use border-box to make sure the width and height are still 50px
-    //box.style.float = 'right';
+    box.style.border= '1px solid #fff';//border for margin but use border-box to make sure the width and height are still 50px
     box.style.display = 'inline-block';
 
 }
 
 function hoverOver(boxes){
+    let defaultColor="white";
+    let clicked = false;
+    const btn = document.querySelector("#rainbow");
+    btn.addEventListener('click', function() {
+        clicked = true;
+    });
+
     boxes.forEach(function (box){
         box.addEventListener('mouseenter', function() {
-            box.style.backgroundColor = "white";
-
+            
+            console.log(`clicked ${clicked}`);
+            if (clicked){
+                box.style.backgroundColor = random_rgba();
+            }
+            else
+                box.style.backgroundColor = defaultColor;
+            
         });
     });
 }
@@ -70,6 +80,19 @@ function clear_button(eachSide){
     });
     
 }
+
+function random_rgba() {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+}
+
+function rainbow(clicked){
+    const btn = document.querySelector("#rainbow");
+    btn.addEventListener('click', function() {
+        clicked = true;
+    });
+}
+
 
 function loadWindow(eachSide){
     window.addEventListener('load', function() {
