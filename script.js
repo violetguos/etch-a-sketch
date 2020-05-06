@@ -25,7 +25,6 @@ function define_size(eachSide){
 }
 
 function define_style(box, colour, boxSize){
-    
     box.style.width = boxSize;
     box.style.height = boxSize;
     box.style.backgroundColor = colour;
@@ -36,14 +35,15 @@ function define_style(box, colour, boxSize){
 
 function hoverOver(){
     const boxes = document.querySelectorAll('.box');
-
     let defaultColor="white";
+
+    // check if rainbow button is clicked
     let clicked = false;
     const btn = document.querySelector("#rainbow");
     btn.addEventListener('click', function() {
         clicked = true;
     });
-
+    // customize colour
     boxes.forEach(function (box){
         box.addEventListener('mouseenter', function() {
             
