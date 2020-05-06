@@ -34,7 +34,9 @@ function define_style(box, colour, boxSize){
 
 }
 
-function hoverOver(boxes){
+function hoverOver(){
+    const boxes = document.querySelectorAll('.box');
+
     let defaultColor="white";
     let clicked = false;
     const btn = document.querySelector("#rainbow");
@@ -56,17 +58,10 @@ function hoverOver(boxes){
     });
 }
 
-function clear_squares(eachSide) {
-    const boxes = document.querySelectorAll('.box');
-    //  container.innerHTML = '';//don't want any extra boxes when you call this function again
-    boxes.forEach(function (box) {define_style(box, 'blue', eachSide)});
-    
-  }
 
-function clear_button(eachSide){
+function clear_button(){
     const btn = document.querySelector("#clear");
     btn.addEventListener('click', function() {
-        clear_squares(eachSide);
         let num = prompt("New grid dimension: ");
         // delete the boxes
         document.querySelectorAll("br").forEach(e => e.parentNode.removeChild(e));
@@ -94,23 +89,11 @@ function rainbow(clicked){
 }
 
 
-function loadWindow(eachSide){
-    window.addEventListener('load', function() {
-        draw_squares(eachSide);
-        outBoxes = document.querySelectorAll('.box');
-        // change colour to white when you hover over 
-        hoverOver(outBoxes);
-        // button and prompt
-        clear_button(eachSide);
-
-    });
-}
-
-
-
 // main script
 let outBoxes;
 const defaultSide = 5;
-loadWindow(defaultSide);
-
-
+// loadWindow(defaultSide);
+draw_squares(defaultSide);
+// change colour to white when you hover over 
+hoverOver();
+clear_button(); 
